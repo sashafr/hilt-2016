@@ -1,4 +1,4 @@
 
-## Analyzing and Presenting Spatial Data
+## Analyzing and Presenting Spatial Data with Python
 
-GIS programming examples - toponym extraction, geocoding, web map development, and more.
+A tutorial for using Python and Javascript to locate named entities in a text, convert them to geojson, and generate a simple map from that data.
