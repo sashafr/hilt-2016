@@ -2,45 +2,36 @@
 
 As a test project, we're going to be extracting "toponyms" - place references - from novels. It would take weeks or months to do this by hand - we'd have to read the entire novel, highlight each of the place references by hand, and then manually everything into some kind of database at the end.
 
-Instead, we're going to use a piece of software called the Stanford Named Entity Recognizer to automatically pick out words or phrases in a text that are proper names. Then, we'll write a simple Python script that passes the extracted toponyms through a geocoding API, which takes the raw location names and converts them into latitude / longitude points that can be plotted on a map.
+Instead, we're going to use a Python library called spaCy to automatically pick out words or phrases in a text that are proper names. Then, we'll write a simple Python script that passes the extracted toponyms through a geocoding API, which takes the raw location names and converts them into latitude / longitude points that can be plotted on a map.
 
 At the end of the process, we'll have a nicely-formatted CSV file that can be imported into visualization tools like Google Fusion Tables and CartoDB.
 
-## Install Java
+
+Please start by downloading the sample files for this lesson to your Desktop: https://github.com/sashafr/price-lab-python/archive/master.zip
+
+## Install spaCy
 
 ---
 
 **MAC**
 
-1. Run `brew cask install java`.
-
-1. When the install finishes, run `java -version`. You should see `java version "1.8.0_92"`.
+1. 
 
 **WINDOWS**
 
-1. Go to http://java.com/en/download/, download the latest version of Java, and run the installer.
+1. Open Git Bash and run `pip install spacy`
+
+1. If you get an error saying that you need C++ build tools, go to http://landinghub.visualstudio.com/visual-cpp-build-tools and click on "Download Visual C++ Build Tools 2015"
+
+1. 1. After it has finished installing, return to Git Bash and run `pip install spacy`
 
 ---
 
-## Install the Stanford Named Entity Recognizer
-
-1. Go to http://nlp.stanford.edu/software/CRF-NER.shtml#Download and click on **Download Stanford Named Entity Recognizer version 3.6.0**.
-
-1. Open the zip file and copy the `stanford-ner-2015-12-09` folder to the `Projects` directory.
-
-1. On the command line, change down into `stanford-ner-2015-12-09`.
-
-1. Start the NER application with: `java -jar stanford-ner.jar`. This will open the application in a separate window. Leave the command line program running in the background.
-
-  ![](images/python/ner-gui.jpg)
-
 ## Extract entities from a novel
 
-1. Head over to http://www.gutenberg.org/ (or anywhere else on the web with full-text documents of interest) and find some kind of interesting text to work with. Try to use something that will have a lot of interesting place references. I'll use Jules Verne's _Around the World in Eighty Days_, which should have plenty!
+1. I have preloaded some text files to play with into the `texts` folder for this lesson, but a good place to find your own is at http://www.gutenberg.org/ (or anywhere else on the web with full-text documents of interest) and find some kind of interesting text to work with. Try to use something that will have a lot of interesting place references. 
 
-1. Get a URL to a web page that just contains the raw text of the document. Eg, `http://www.gutenberg.org/cache/epub/103/pg103.txt`.
-
-1. Go back to the NER application and click **File > Load URL**. Paste in the URL.
+1. Go back to your command line and navigate to where you downloaded the folder for this lesson.
 
   ![](images/python/load-url.jpg)
 
