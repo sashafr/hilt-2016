@@ -7,7 +7,7 @@ Instead, we're going to use a Python library called spaCy to automatically pick 
 At the end of the process, we'll have a nicely-formatted CSV file that can be imported into visualization tools like Google Fusion Tables and CartoDB.
 
 
-Please start by downloading the sample files for this lesson to your Desktop: https://github.com/sashafr/price-lab-python/archive/master.zip
+Please start by downloading the sample files for this lesson to your Desktop, and place them in a folder called `price-lab-python` : https://github.com/sashafr/price-lab-python/archive/master.zip
 
 ## Install spaCy
 
@@ -15,7 +15,7 @@ Please start by downloading the sample files for this lesson to your Desktop: ht
 
 **MAC**
 
-1. 
+1. Open your shell and run `pip install spacy`
 
 **WINDOWS**
 
@@ -23,7 +23,7 @@ Please start by downloading the sample files for this lesson to your Desktop: ht
 
 1. If you get an error saying that you need C++ build tools, go to http://landinghub.visualstudio.com/visual-cpp-build-tools and click on "Download Visual C++ Build Tools 2015"
 
-1. 1. After it has finished installing, return to Git Bash and run `pip install spacy`
+1.1. After it has finished installing, return to Git Bash and run `pip install spacy`
 
 ---
 
@@ -31,54 +31,15 @@ Please start by downloading the sample files for this lesson to your Desktop: ht
 
 1. I have preloaded some text files to play with into the `texts` folder for this lesson, but a good place to find your own is at http://www.gutenberg.org/ (or anywhere else on the web with full-text documents of interest) and find some kind of interesting text to work with. Try to use something that will have a lot of interesting place references. 
 
-1. Go back to your command line and navigate to where you downloaded the folder for this lesson.
+1. Go back to your command line and navigate to where you downloaded the folder for this lesson (for example, `cd ~/Desktop/price-lab-python`).
 
-  ![](images/python/load-url.jpg)
+1. Move in to the `notebooks` directory (`cd notebooks`) and run the command `jupyter notebook`.
 
-1. Load the model file - click on **Classifier > Load CRF From File**.
-
-1. In the file browser, find the `stanford-ner-2015-12-09` folder and open up "classifiers." Select the **english.all.3class.distsim.crf.ser.gz** file and click **Open**.
-
-  ![](images/python/load-model.jpg)
-
-1. Click **Run NER** to run the model. Depending on the length of the text, this should take 10-20 seconds. When it's done, you should see colored highlights on entities in the text.
-
-1. Save a tagger version of the file. Click **File > Save Tagged File As** and save the file back into the `stanford-ner-2015-12-09` directory.
-
-1. In Atom, open up the file and take a look at the markup that the NER generated. The place names are now wrapped in `<LOCATION>` tags.
+1. **Scott needs to finish this section **
 
 So, now we know where the toponyms are in the text, but that's it. To plot the place names on a map, we need to pull the individual `<LOCATION>` tags out of the text and link them up with longitude / latitude coordinates. This kind of data transformation / formatting work is a great fit for a programming language like Python.
 
-## Set up a Python development environment
-
-First, we'll install the latest release of Python 3.
-
----
-
-**MAC**
-
-1. On Mac, the easiest way to do this is with a program called Homebrew, a package manager that automatically installs software on OSX. Go to http://brew.sh, and copy-and-paste the command on the front page into your terminal.
-
-1. Install Python 3 with: `brew install python3`
-
-1. Change back into the `Projects` directory: `cd ~/Projects`
-
-**WINDOWS**
-
-1. Go to http://python.org/downloads and click **Download Python 3.5.1**.
-
-1. Once the installer finishes, open a command prompt and run these commands:
-
-  ```sh
-  setx PATH "%PATH%;C:\Users\<username>\AppData\Local\Programs\Python\Python35-32"
-  setx PATH "%PATH%;C:\Users\<username>\AppData\Local\Programs\Python\Python35-32\Scripts"
-  ```
-
-  This will make the `python` and `pip` (the Python package manager) executables available from the command line.
-
-1. Change back into the `Projects` directory: `cd C:\Users\<username>\Projects`
-
----
+## Set up your working environment
 
 1. Create a new directory called `geotext`, which is what we'll call our program: `mkdir geotext`
 
