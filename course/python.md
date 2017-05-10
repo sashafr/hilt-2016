@@ -140,7 +140,7 @@ The first step - we need to pull out the `<LOCATION>` tags and put them into a C
     ner_to_csv  Extract tagged toponyms from a text file.
   ```
 
-1. Now, let's pull out the toponyms. Run: `python geotext.py <path to NER file> toponyms.csv`. When it finishes, open up the new `toponyms.csv` file - you should have a CSV with the contents of each of the `<LOCATION>` files, along with the `offset` index.
+1. Now, let's pull out the toponyms. Run: `python geotext.py ner-to-csv <path to NER file> toponyms.csv`. When it finishes, open up the new `toponyms.csv` file - you should have a CSV with the contents of each of the `<LOCATION>` files, along with the `offset` index.
 
 ## Geocode the toponyms
 
@@ -165,7 +165,6 @@ def geocode(in_file, out_file):
     reader = csv.DictReader(in_file)
 
     geocoder = GoogleV3(
-        domain='dstk.dclure.org',
         timeout=10,
         scheme='http',
     )
@@ -200,7 +199,7 @@ def geocode(in_file, out_file):
             print(e)
 ```
 
-1. Back on the command line, run this new command, passing in the CSV that was produced by the first command, and saving the result to a second CSV. Eg: `python geotext.py toponyms.csv toponyms-geocoded.csv`. This will take 2-3 minutes to run, since a separate request has to be made for each item.
+1. Back on the command line, run this new command, passing in the CSV that was produced by the first command, and saving the result to a second CSV. Eg: `python geotext.py geocode.py toponyms.csv toponyms-geocoded.csv`. This will take 2-3 minutes to run, since a separate request has to be made for each item.
 
 ## Convert the CSV to geojson
 
